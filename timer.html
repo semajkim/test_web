@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Example</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        #timer {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple Timer Example</h1>
+
+    <div id="timer">00:00:00</div>
+
+    <script>
+        // Function to format the time
+        function formatTime(time) {
+            return time < 10 ? `0${time}` : time;
+        }
+
+        // Function to update the timer
+        function updateTimer() {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes === 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+
+            // Display the formatted time
+            timerElement.textContent = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+        }
+
+        // Initial values
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+
+        // Get the timer element
+        const timerElement = document.getElementById('timer');
+
+        // Update the timer every second (1000 milliseconds)
+        setInterval(updateTimer, 1000);
+    </script>
+
+</body>
+</html>
